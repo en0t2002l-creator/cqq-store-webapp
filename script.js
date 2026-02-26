@@ -51,9 +51,9 @@ function setupEventListeners() {
         });
     });
 
-    // Secret admin panel shortcut: Ctrl+Shift+A
+    // Secret admin panel shortcut: Alt+Shift+A (to avoid conflicts with browser shortcuts)
     document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        if (e.altKey && e.shiftKey && e.key === 'A') {
             e.preventDefault();
             toggleAdminPanel();
         }

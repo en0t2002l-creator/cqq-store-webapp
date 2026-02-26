@@ -688,6 +688,106 @@
             color: var(--bg-primary);
         }
 
+        /* About Section */
+        .about-section {
+            max-width: 900px;
+            margin: 8rem auto;
+            padding: 0 3rem 6rem;
+        }
+
+        .about-container {
+            text-align: center;
+        }
+
+        .about-content {
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .about-links {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-links h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2rem;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .link-icon {
+            font-size: 1.3rem;
+        }
+
+        .team-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .team-link {
+            padding: 0.7rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        .team-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
         /* Login Form */
         .login-overlay {
             display: none;
@@ -773,6 +873,35 @@
             .nav-links {
                 display: none;
             }
+
+            .about-section {
+                padding: 0 1.5rem 4rem;
+                margin: 4rem auto;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .team-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .team-link {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -782,9 +911,9 @@
         <nav>
             <div class="logo">CQQ SHOP</div>
             <ul class="nav-links">
-                <li><a href="#gallery">Коллекция</a></li>
+                <li><a href="#gallery">Ассортимент</a></li>
                 <li><a href="#about">О нас</a></li>
-                <li><a href="https://t.me/vizkazz" target="_blank">Контакты</a></li>
+                <li><a href="https://t.me/CQQSHOP" target="_blank">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -837,7 +966,7 @@
         </div>
     </div>
 
-    <!-- Admin Toggle Button (Hidden - use Ctrl+Shift+A to open) -->
+    <!-- Admin Toggle Button (Hidden - use Alt+Shift+A to open) -->
     <button class="admin-toggle" onclick="toggleAdminPanel()" title="Админ панель" style="display: none;">⚙</button>
 
     <!-- Login Overlay -->
@@ -918,6 +1047,46 @@
             </div>
         </div>
     </div>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Мы — команда профессионалов с более чем <strong>3-летним опытом</strong> в сфере ресейла premium одежды. 
+                    В нашем ассортименте представлены <strong>только оригинальные вещи</strong> с проверенной аутентичностью.
+                </p>
+                <p class="about-text">
+                    Мы специализируемся на доставке уникальных items из <strong>Японии, Китая и Европы</strong>, 
+                    предлагая вам доступ к эксклюзивным коллекциям, которые сложно найти в России.
+                </p>
+                <p class="about-text">
+                    Каждая вещь проходит тщательный отбор и проверку качества перед тем, как попасть в наш каталог.
+                </p>
+                
+                <div class="about-links">
+                    <h3>Мы в социальных сетях</h3>
+                    <div class="social-links">
+                        <a href="https://t.me/CQQSHOP" target="_blank" class="social-link">
+                            <span class="link-icon">📱</span>
+                            <span>Telegram канал</span>
+                        </a>
+                        <a href="https://www.avito.ru/brands/682953f2a01593ab7c487329a5a4883c/all?src=fs&page_from=from_favorite_sellers&sellerId=ddc7548977297e05c55f6e3d53043dae" target="_blank" class="social-link">
+                            <span class="link-icon">🛍️</span>
+                            <span>Авито</span>
+                        </a>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">Наша команда</h3>
+                    <div class="team-links">
+                        <a href="https://t.me/vizkazz" target="_blank" class="team-link">@vizkazz</a>
+                        <a href="https://t.me/nester19" target="_blank" class="team-link">@nester19</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
