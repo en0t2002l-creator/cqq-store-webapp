@@ -51,12 +51,22 @@ function setupEventListeners() {
         });
     });
 
-    // Secret admin panel shortcut: Alt+Shift+A (to avoid conflicts with browser shortcuts)
+    // Secret admin panel shortcut: Alt+Shift+A
+    let keys = {};
     document.addEventListener('keydown', function(e) {
-        if (e.altKey && e.shiftKey && e.key === 'A') {
+        keys[e.key] = true;
+        
+        // Alt + Shift + A (case insensitive)
+        if ((keys['Alt'] || e.altKey) && (keys['Shift'] || e.shiftKey) && (keys['a'] || keys['A'] || e.key === 'a' || e.key === 'A')) {
             e.preventDefault();
+            e.stopPropagation();
             toggleAdminPanel();
+            keys = {}; // Reset keys
         }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        delete keys[e.key];
     });
 
     // Close modal on background click
