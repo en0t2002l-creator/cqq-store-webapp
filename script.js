@@ -1,7 +1,23 @@
 // Configuration
 const TELEGRAM_USERNAME = '@vizkazz';
-const ADMIN_PASSWORD = 'cqqshop2025'; // Измените на свой пароль!
+// Пароль хранится в виде SHA-256 хеша для безопасности
+// Текущий пароль: cqqshop200226
+// Чтобы создать свой хеш пароля:
+// 1. Откройте консоль браузера (F12)
+// 2. Введите: await hashPassword('ваш_пароль')
+// 3. Скопируйте результат и замените PASSWORD_HASH ниже
+const PASSWORD_HASH = '0d7ab7b3b544fe72bda40b160d686bb5f72ff96215a283bab235728d610ecfb3'; // cqqshop200226
 const STORAGE_KEY = 'cqqshop_items';
+
+// Функция хеширования пароля
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hash));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
 
 // Global state
 let items = [];
@@ -35,6 +51,14 @@ function setupEventListeners() {
         });
     });
 
+    // Secret admin panel shortcut: Ctrl+Shift+A
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+            e.preventDefault();
+            toggleAdminPanel();
+        }
+    });
+
     // Close modal on background click
     document.getElementById('itemModal').addEventListener('click', function(e) {
         if (e.target === this) {
@@ -50,9 +74,9 @@ function setupEventListeners() {
     });
 
     // Admin password enter key
-    document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+    document.getElementById('adminPassword').addEventListener('keypress', async function(e) {
         if (e.key === 'Enter') {
-            login();
+            await login();
         }
     });
 }
@@ -318,10 +342,11 @@ function toggleAdminPanel() {
     }
 }
 
-function login() {
+async function login() {
     const password = document.getElementById('adminPassword').value;
+    const inputHash = await hashPassword(password);
     
-    if (password === ADMIN_PASSWORD) {
+    if (inputHash === PASSWORD_HASH) {
         isAdminAuthenticated = true;
         document.getElementById('loginOverlay').classList.remove('active');
         document.getElementById('adminPassword').value = '';

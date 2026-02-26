@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #FAFAF8;
-            --bg-secondary: #F5F5F0;
-            --text-primary: #1A1A1A;
-            --text-secondary: #666666;
-            --accent: #2C2C2C;
-            --border: #E0E0D8;
-            --shadow: rgba(0, 0, 0, 0.08);
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --text-primary: #F5F5F5;
+            --text-secondary: #999999;
+            --accent: #E8E8E8;
+            --border: #2A2A2A;
+            --shadow: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -39,7 +39,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(250, 250, 248, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             animation: slideDown 0.6s ease-out;
@@ -99,7 +99,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #f5f5f0 0%, #fafaf8 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             margin-top: 80px;
             position: relative;
             overflow: hidden;
@@ -113,7 +113,7 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(44, 44, 44, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(232, 232, 232, 0.03) 0%, transparent 70%);
             animation: float 20s ease-in-out infinite;
         }
 
@@ -255,12 +255,12 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
         }
 
         .preview-dot.active {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             width: 20px;
             border-radius: 3px;
         }
@@ -298,7 +298,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             animation: fadeIn 0.3s ease-out;
             overflow-y: auto;
@@ -464,8 +464,9 @@
 
         .cta-button:hover {
             background: var(--text-primary);
+            color: var(--bg-primary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         /* Admin Panel */
@@ -499,7 +500,7 @@
             right: -500px;
             width: 500px;
             height: 100vh;
-            background: white;
+            background: var(--bg-secondary);
             box-shadow: -5px 0 30px var(--shadow);
             z-index: 2001;
             transition: right 0.4s ease;
@@ -675,15 +676,16 @@
         .admin-item-actions button {
             padding: 0.5rem 1rem;
             border: 1px solid var(--border);
-            background: white;
+            background: var(--bg-primary);
             cursor: pointer;
             font-size: 0.85rem;
             transition: all 0.3s ease;
+            color: var(--text-primary);
         }
 
         .admin-item-actions button:hover {
             background: var(--accent);
-            color: white;
+            color: var(--bg-primary);
         }
 
         /* Login Form */
@@ -790,15 +792,13 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Curated Vintage</h1>
-            <p>Эксклюзивная коллекция б/у одежды</p>
+            <h1>CQQ SHOP</h1>
+            <p>Creating Your Wardrobe in 2026</p>
         </div>
     </section>
 
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
-        <h2 class="section-title">Коллекция</h2>
-        
         <div class="filter-buttons">
             <button class="filter-btn active" data-category="all">Все</button>
             <button class="filter-btn" data-category="available">В наличии</button>
@@ -837,8 +837,8 @@
         </div>
     </div>
 
-    <!-- Admin Toggle Button -->
-    <button class="admin-toggle" onclick="toggleAdminPanel()" title="Админ панель">⚙</button>
+    <!-- Admin Toggle Button (Hidden - use Ctrl+Shift+A to open) -->
+    <button class="admin-toggle" onclick="toggleAdminPanel()" title="Админ панель" style="display: none;">⚙</button>
 
     <!-- Login Overlay -->
     <div class="login-overlay" id="loginOverlay">
