@@ -28,6 +28,8 @@ let editingItemId = null;
 let currentModalItem = null;
 let currentImageIndex = 0;
 let previewTimers = {};
+let logoClickCount = 0;
+let logoClickTimer = null;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -37,6 +39,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add form submit handler
     document.getElementById('addItemForm').addEventListener('submit', handleAddItem);
+    
+    // Secret admin access: Triple-click on logo
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
+            logoClickCount++;
+            
+            if (logoClickTimer) {
+                clearTimeout(logoClickTimer);
+            }
+            
+            if (logoClickCount === 3) {
+                toggleAdminPanel();
+                logoClickCount = 0;
+            }
+            
+            logoClickTimer = setTimeout(() => {
+                logoClickCount = 0;
+            }, 600); // Reset after 600ms
+        });
+        
+        // Visual hint on hover
+        logo.style.cursor = 'pointer';
+        logo.title = 'CQQ SHOP';
+    }
 });
 
 // Setup event listeners
@@ -49,24 +77,6 @@ function setupEventListeners() {
             currentFilter = this.dataset.category;
             renderItems();
         });
-    });
-
-    // Secret admin panel shortcut: Alt+Shift+A
-    let keys = {};
-    document.addEventListener('keydown', function(e) {
-        keys[e.key] = true;
-        
-        // Alt + Shift + A (case insensitive)
-        if ((keys['Alt'] || e.altKey) && (keys['Shift'] || e.shiftKey) && (keys['a'] || keys['A'] || e.key === 'a' || e.key === 'A')) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleAdminPanel();
-            keys = {}; // Reset keys
-        }
-    });
-
-    document.addEventListener('keyup', function(e) {
-        delete keys[e.key];
     });
 
     // Close modal on background click
